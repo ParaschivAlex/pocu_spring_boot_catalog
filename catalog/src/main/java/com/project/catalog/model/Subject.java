@@ -86,4 +86,17 @@ public class Subject {
     public void setSeminaryPercent(Integer seminaryPercent) {
         this.seminaryPercent = seminaryPercent;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder("Subject{");
+        sb.append("id=").append(id);
+        sb.append(", name='").append(name);
+        sb.append(", creditPoints=").append(creditPoints);
+        sb.append(", isOptional=").append(isOptional);
+        sb.append(", coursePercent=").append(coursePercent);
+        sb.append(", seminaryPercent=").append(seminaryPercent);
+        sb.append('}');
+        return sb.toString();
+    }
 }

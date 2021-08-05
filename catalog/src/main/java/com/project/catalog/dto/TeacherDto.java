@@ -1,40 +1,13 @@
 package com.project.catalog.dto;
 
 import java.time.LocalDate;
-import java.util.List;
 
-public class TeacherDto {
+public class TeacherDto extends TeacherBasicInfoDto {
 
-    private Long id;
-    private String firstName;
-    private String lastName;
     private LocalDate employmentDate;
     private LocalDate birthDate;
-    List<SubjectDto> subjects;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+    private String cnp;
+    private Long salary;
 
     public LocalDate getEmploymentDate() {
         return employmentDate;
@@ -52,11 +25,19 @@ public class TeacherDto {
         this.birthDate = birthDate;
     }
 
-    public List<SubjectDto> getSubjects() {
-        return subjects;
+    public String getCnp() {
+        return cnp;
     }
 
-    public void setSubjects(List<SubjectDto> subjects) {
-        this.subjects = subjects;
+    public void setCnp(String cnp) {
+        this.cnp = cnp;
+    }
+
+    public Long getSalary() {
+        return salary;
+    }
+
+    public void setSalary(Long salary) {
+        this.salary = salary;
     }
 }

@@ -1,5 +1,7 @@
 package com.project.catalog.service;
 
+import com.project.catalog.exception.BadRequestException;
+import com.project.catalog.exception.NotFoundException;
 import com.project.catalog.model.Subject;
 import com.project.catalog.repository.SubjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,12 +10,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-@Service
+@Service     //service classes contain most of the business logic;
 public class SubjectService {
 
-    //service classes contain most of the business logic;
-
     private final SubjectRepository subjectRepository;
+//    private Logger logger = LoggerFactory.getLogger(SubjectService.class);
 
     @Autowired
     public SubjectService(SubjectRepository subjectRepository) {
@@ -27,14 +28,18 @@ public class SubjectService {
     public Subject getSubject(Long id) {
         Optional<Subject> optionalSubject = subjectRepository.findById(id);
 
-        if (optionalSubject.isPresent()) {
-            return optionalSubject.get();
-        } else {
-            throw new RuntimeException("Subject not found!");
-        }
+//        if (optionalSubject.isPresent()) {
+//            return optionalSubject.get();
+//        } else {
+////            logger.warn("Subject not found!");
+//            throw new RuntimeException("Subject not found!");
+//        }
+
+        return optionalSubject.orElseThrow(() -> new NotFoundException("Subject not found!", "subject.not.found"));
     }
 
     public Subject saveSubject(Subject subject) {
+        validateSubjectScoring(subject);
         return subjectRepository.save(subject);
     }
 
@@ -71,6 +76,20 @@ public class SubjectService {
             return subjectRepository.save(subjectUpdated);
         } else {
             throw new RuntimeException("Subject not found!");
+        }
+    }
+
+    public List<Subject> findAllByCreditPoints(Integer points) {
+        return subjectRepository.findByCreditPoints(points);
+    }
+
+    public Long getNumberOfSubjectsWithCreditPointsBetween(Integer creditStart, Integer creditEnd) {
+        return subjectRepository.countByCreditPointsBetween(creditStart, creditEnd);
+    }
+
+    private void validateSubjectScoring(Subject subject) {
+        if(subject.getCoursePercent() + subject.getSeminaryPercent() != 100)    {
+            throw new BadRequestException("Subject scoring percent must be 100%", "subject.scoring.sum.invalid");
         }
     }
 
