@@ -42,4 +42,10 @@ public class SubjectConverter {
 
         return subject;
     }
+
+    public List<Subject> mapToEntities(List<SubjectDto> subjectDtos)    {
+        return subjectDtos.stream()
+                .map(this::maptoEntity)
+                .collect(Collectors.toList());
+    }
 }

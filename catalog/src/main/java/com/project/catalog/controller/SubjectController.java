@@ -99,13 +99,13 @@ public class SubjectController {
     }
 
     @GetMapping("/points/{credit}")
-    public List<SubjectDto> getAllSubjectsByCreditPoints(@PathVariable Integer credit)  {
+    public List<SubjectDto> getAllSubjectsByCreditPoints(@PathVariable Integer credit) {
         List<Subject> subjects = subjectService.findAllByCreditPoints(credit);
         return subjectConverter.maptoDtos(subjects);
     }
 
     @GetMapping("/between/{creditStart}/{creditEnd}")
-    public Long getNumberOfSubjectsWithCreditPointsBetween(@PathVariable Integer creditStart, @PathVariable Integer creditEnd)  {
+    public Long getNumberOfSubjectsWithCreditPointsBetween(@PathVariable Integer creditStart, @PathVariable Integer creditEnd) {
         return subjectService.getNumberOfSubjectsWithCreditPointsBetween(creditStart, creditEnd);
     }
 }

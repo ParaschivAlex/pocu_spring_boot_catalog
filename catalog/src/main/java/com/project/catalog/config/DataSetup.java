@@ -38,11 +38,11 @@ public class DataSetup implements ApplicationRunner {
         saveSubject("Sport", 2, true, 90, 10);
         saveSubject("Data Structure", 6, false, 60, 40);
 
-        addTeacher("FirstName1", "LastName1", "2344565748394", 99999L);
-        addTeacher("FirstName2", "LastName2", "2344565748394", 99999L);
-        addTeacher("FirstName3", "LastName3", "2344565748394", 99999L);
+        addTeacher("FirstName1", "LastName1", "2344565748391", 99999L);
+        addTeacher("FirstName1", "LastName2", "2344565748392", 99999L);
+        addTeacher("FirstName3", "LastName1", "2344565748393", 99999L);
         addTeacher("FirstName4", "LastName4", "2344565748394", 99999L);
-        addTeacher("FirstName5", "LastName5", "2344565748394", 99999L);
+        addTeacher("FirstName5", "LastName5", "2344565748395", 99999L);
 //        }
     }
 

@@ -48,7 +48,7 @@ public class SubjectService {
         if (subject.isPresent()) {
             subjectRepository.delete(subject.get());
         } else {
-            throw new RuntimeException("Subject not found!");
+            throw new NotFoundException("Subject not found!", "subject.not.found");
         }
     }
 
@@ -59,7 +59,7 @@ public class SubjectService {
             subjectUpdated.setId(id);
             return subjectRepository.save(subjectUpdated);
         } else {
-            throw new RuntimeException("Subject not found!");
+            throw new NotFoundException("Subject not found!", "subject.not.found");
         }
     }
 
@@ -75,7 +75,7 @@ public class SubjectService {
             subjectUpdated.setSeminaryPercent(subjectUpdated.getSeminaryPercent() == null ? subjectOptional.get().getSeminaryPercent() : subjectUpdated.getSeminaryPercent());
             return subjectRepository.save(subjectUpdated);
         } else {
-            throw new RuntimeException("Subject not found!");
+            throw new NotFoundException("Subject not found!", "subject.not.found");
         }
     }
 
